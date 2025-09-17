@@ -1,0 +1,174 @@
+.required-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 0;
+  padding: 1px 16px;
+}
+
+.cancel-leave-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clipboard-icon {
+  font-size: 24px;
+  color: #333333;
+}
+
+.required-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "Samsung InterFace", "Segoe UI", Arial, sans-serif;
+}
+
+.grey-icon-header {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+.financial-year-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 1px 10px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  min-height: 44px;
+}
+
+.leave-balance-heading {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(32, 34, 36, 1);
+}
+
+.financial-year-label {
+  font-weight: 500;
+  color: #333;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.year-options {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.radio-option input[type="radio"] {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  border: 2px solid #dee2e6;
+  border-radius: 50%;
+  background: white;
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"]:checked {
+  border-color: rgba(56, 174, 224, 1);
+  background: white;
+}
+
+.radio-option input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(56, 174, 224, 1);
+}
+
+.radio-text {
+  color: rgba(32, 34, 36, 1);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.radio-option input[type="radio"]:checked + .radio-text {
+  font-weight: 700;
+  color: rgba(32, 34, 36, 1);
+}
+
+/* Leave summary row */
+.leave-summary-row {
+  display: grid;
+  
+  grid-template-columns: repeat(7, minmax(180px, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.leave-card {
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.leave-card-title {
+  font-weight: 400;
+  color: rgba(75, 85, 99, 1);
+  font-size: 14px;
+}
+
+.leave-card-days {
+  font-weight: 700;
+  color: rgba(32, 34, 36, 1);
+  font-size: 14px;
+}
+
+.leave-cards-next {
+  position: absolute;
+  top: 33px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.leave-cards-next:hover,
+.leave-cards-next:focus,
+.leave-cards-next:active {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.leave-cards-next img { width: 18px; height: 18px; }
+
+@media (max-width: 1200px) {
+  .leave-summary-row { grid-template-columns: repeat(3, minmax(180px, 1fr)); }
+}
+@media (max-width: 768px) {
+  .leave-summary-row { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+}
