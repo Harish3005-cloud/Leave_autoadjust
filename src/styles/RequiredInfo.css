@@ -170,12 +170,13 @@
   border: none;
 }
 .leave-cards-next img { width: 28px; height: 28px;   }
-
-@media (max-width: 1200px) {
-  .leave-summary-row { grid-template-columns: repeat(3, minmax(180px, 1fr)); }
-}
-@media (max-width: 768px) {
-  .leave-summary-row { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+.notification-icon-header {
+  height: 23px;
+  width: 23px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  opacity: 0.8;
 }
 
 /* --- REMOVED: .leave-detail-modal-overlay style is no longer needed --- */

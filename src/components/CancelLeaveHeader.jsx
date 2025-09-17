@@ -3,6 +3,7 @@ import "../styles/RequiredInfo.css";
 import CancelLeaveIcon from "../assets/svg/cancelLeaveIcon.svg";
 import greyIcon from "../assets/svg/greyiicon.svg";
 import arrowCircle from "../assets/svg/Arrow-circle.svg";
+import notification from "../assets/svg/notification.svg";
 
 const LeaveDetailModal = ({ onClose }) => {
   const leaveDetails = [
@@ -113,7 +114,9 @@ const RequiredInfo = ({ onClick, className = "" }) => {
     </div>
     <div className="leave-summary-row">
       {leaveSummaries.map((item, idx) => (
+       
         <div key={item.title} className="leave-card" style={{ background: item.bg }}>
+           {idx < 3 && <img src={notification} alt="notification" className="notification-icon-header" />}
           <div className="leave-card-title">{item.title}</div>
           <div className="leave-card-days">{item.days} days</div>
           {idx === leaveSummaries.length - 1 && (
