@@ -7,6 +7,7 @@ import Avatars3 from "./components/Avatars3.jsx";
 import ApplyLeave from "./components/ApplyLeave.jsx";
 import CancelLeave from "./components/CancelLeave.jsx";
 import Avatars4 from "./components/Avatars4.jsx";
+import Leave_Balance from "./components/Leave_Balance.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<CancelLeave />} />
           {/* <Route path="/cancel-leave" element={<CancelLeave />} /> */}
           <Route path="/ApplyLeave" element={<ApplyLeave />} />
+          <Route path="/Leave_Balance" element={<Leave_Balance />} />
           <Route path="/Avatars3" element={<Avatars3 />} />
           <Route path="/Avatars4" element={<Avatars4 />} />
         </Routes>

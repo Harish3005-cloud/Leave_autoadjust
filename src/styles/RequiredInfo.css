@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative; /* Added for positioning context */
 }
 
 .clipboard-icon {
@@ -115,12 +116,16 @@
   
   grid-template-columns: repeat(7, minmax(180px, 1fr));
   gap: 16px;
-  width: 100%;
-  margin-top: 16px;
+  width: 95%;
+   margin-left: 38px;
+  
+  margin-top: 23px;
+  margin-bottom: 23px;
 }
 
 .leave-card {
   border-radius: 12px;
+  
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -142,10 +147,10 @@
 
 .leave-cards-next {
   position: absolute;
-  top: 33px;
-  right: 12px;
-  width: 24px;
-  height: 24px;
+     top: 33px;
+    right: -23px;
+    width: 42px;
+    height: 20px;
   background: transparent;
   border-radius: 50%;
   display: flex;
@@ -164,11 +169,118 @@
   box-shadow: none;
   border: none;
 }
-.leave-cards-next img { width: 18px; height: 18px; }
+.leave-cards-next img { width: 28px; height: 28px;   }
 
 @media (max-width: 1200px) {
   .leave-summary-row { grid-template-columns: repeat(3, minmax(180px, 1fr)); }
 }
 @media (max-width: 768px) {
   .leave-summary-row { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+}
+
+/* --- REMOVED: .leave-detail-modal-overlay style is no longer needed --- */
+
+/* Renamed and restyled modal to be a popover */
+.leave-detail-popover {
+  position: absolute;
+  top: 282px; /* Position below the header */
+  left: 67px;
+  z-index: 1000;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 919px;
+  padding: 20px 24px;
+}
+
+/* Arrow pointing up to the icon */
+.leave-detail-popover::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 225px; /* Adjust this value to align with the 'i' icon */
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #ffffff;
+  filter: drop-shadow(0 -1px 0 rgba(0,0,0,0.1));
+}
+
+.leave-detail-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.leave-detail-modal-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.leave-detail-modal-close {
+  background-color: rgba(56, 174, 224, 1);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  bottom: 2px;;
+  font-size: 20px;
+  border-color: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  padding-bottom: 2px;
+}
+.leave-detail-modal-close:hover,
+.leave-detail-modal-close:focus{
+  border-color:none;
+  outline: none;
+}
+
+.leave-detail-table-container {
+  overflow-x: auto;
+  border: 1px solid rgba(228, 231, 236, 1);
+}
+
+.leave-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.leave-detail-table thead tr {
+  background-color: #f0f6ff;
+}
+
+.leave-detail-table th,
+.leave-detail-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(228, 231, 236, 1);
+  color: rgba(52, 64, 84, 1);
+  font-weight: 400;
+  font-size: 14px;
+
+}
+
+.leave-detail-table th {
+  font-weight: 700;
+  color: rgba(52, 64, 84, 1);
+}
+
+.leave-detail-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.leave-detail-table tbody tr:last-child td {
+  border-bottom: none;
 }
