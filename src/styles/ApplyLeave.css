@@ -74,12 +74,13 @@
 
 .apply-cancel-container .row {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 0.9fr auto;
-  gap: 16px;
+  /* Stable grid that keeps controls readable at various widths */
+  grid-template-columns: minmax(220px, 1.1fr) minmax(220px, 1fr) minmax(220px, 0.9fr) auto;
+  gap: 24px;
 }
 
 .apply-cancel-container .row.controls-row {
-  grid-template-columns: 0.9fr 0.6fr 0.6fr auto;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(220px, 0.6fr) minmax(220px, 0.6fr) auto;
   margin-top: 12px;
 }
 
@@ -98,12 +99,13 @@
 .note-in-header { position: static; }
 .note-icon { width: 29px; height: 34px;  }
 .note-panel { 
+  /* Anchor to the header so it’s stable across screen sizes */
   position: absolute; 
-  top: 462px; /* Position below the icon */
-  right: 27px; 
-  width: 100%;
-  max-width: 540px;
-  z-index: 10; /* Ensure it's above other content */
+  top: 34% !important; /* directly below the header */
+  right: 0; 
+  transform: translateY(8px);
+  width: clamp(320px, 40vw, 540px);
+  z-index: 10; /* above content */
   background: rgba(255, 255, 255, 1); 
   color: rgba(96, 96, 96, 1); 
   border: 1px solid #e0e0e0; 
@@ -114,7 +116,7 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 .note-panel::before { content: ""; position: absolute; top: -8px; right: 18px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid #ffffff; filter: drop-shadow(0 -1px 0 #e0e0e0); }
-.note-panel-fixed { position: absolute; top: 453px; right: 32px; width: 540px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+.note-panel-fixed { position: absolute; top: 100%; right: 0; transform: translateY(8px); width: clamp(320px, 40vw, 540px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
 .note-panel-header { font-weight: 700; font-size: 14px; color: rgba(32, 34, 36, 1); margin-bottom: 8px; }
 .note-list { margin: 0; padding-left: 18px; }
 .note-close { 
@@ -141,17 +143,16 @@
   padding-bottom: 2px; /* Nudge the 'x' down slightly for visual centering */
 }
 
-.control { display: flex; flex-direction: column; }
+.control { display: flex; flex-direction: column; min-width: 220px; }
 .control-label { display: block; font-weight: 650; color: #333; margin-bottom: 6px; font-size: 14px; }
 .control-select { height: 57px; border: 1px solid #d0d0d0; border-radius: 6px; padding: 8px 36px 8px 12px; background: #fff; font-family: inherit; appearance: none; background-image: url('../assets/svg/chevron-down.svg'); background-repeat: no-repeat; background-position: right 10px center; background-size: 16px 16px; color: rgba(32, 34, 36, 1); }
 .control-select option { color: rgba(32, 34, 36, 1); }
 
-
-.date-input { position: relative; display: flex; align-items: center; }
-.date-native { height: 40px; width: 100%; border: 1px solid #d0d0d0; border-radius: 6px; padding: 8px 160px 8px 12px; gap:6px; background: #fff; font-family: inherit; color: rgba(32, 34, 36, 1); }
+.date-input { position: relative; display: flex; align-items: center; width: 100%; overflow: visible; }
+.date-native { height: 40px; width: 100%; border: 1px solid #d0d0d0; border-radius: 6px; padding: 8px 44px 8px 12px; gap:6px; background: #fff; font-family: inherit; color: rgba(32, 34, 36, 1); box-sizing: border-box; }
 .date-native::placeholder { color: rgba(32, 34, 36, 1); opacity: 1; }
-.date-button { position: absolute; right: 8px; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 4px; }
-.date-icon { width: 20px; height: 20px; }
+.date-button { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; pointer-events: none; z-index: 2; }
+.date-icon { width: 18px; height: 18px; display: block; }
 
 .add-to-list { display: flex; align-items: flex-end; justify-content: flex-end; justify-self: end; }
 .add-to-leave { height: 40px; margin-left: 23px; padding: 0 14px; border: 1px solid rgba(232, 231, 227, 1); color: rgba(56, 174, 224, 1); background: rgba(255, 255, 255, 1); border-radius: 6px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; text-transform: lowercase;  }
@@ -229,7 +230,7 @@
   color: #333;
   margin-bottom: 0;
   background: white;
-  padding: 12px 35px;
+  padding: 10px 16px; /* tighter horizontal padding to align with table */
   border: 1px solid #e0e0e0;
   border-bottom: none;
   border-radius: 6px 6px 0 0;
@@ -237,35 +238,48 @@
 }
 
 .leave-table-container {
-  overflow-x: auto;
+  /* Always keep the table scrollable vertically within a viewport */
+  overflow-x: hidden !important; /* prevent horizontal scrollbar */
+  overflow-y: visible;
+  max-height: none;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
+  background: #fff;
+  max-width: 100%;
 }
 
 .leave-table {
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   background: white;
   table-layout: fixed;
+  box-sizing: border-box;
 }
 
 .leave-table th {
   background: rgba(239, 246, 255, 1);
-  padding: 12px 35px;
+  padding: 8px 12px; /* tighter */
   text-align: center;
   font-weight: 700;
   color: rgba(32, 34, 36, 1);
   border-bottom: 1px solid #e0e0e0;
   font-size: 14px;
+  position: sticky; /* keep header visible during scroll */
+  top: 0;
+  z-index: 1;
+  white-space: normal; /* allow wrapping */
 }
 
 .leave-table td {
-  padding: 12px 35px;
+  padding: 8px 12px; /* tighter */
   border-bottom: 1px solid #e0e0e0;
   color: rgba(32, 34, 36, 1);
   font-size: 14px;
   vertical-align: middle;
   text-align: center;
+  white-space: normal; /* allow wrapping */
+  word-break: break-word; /* break long strings */
 }
 .leave-table th:nth-child(1){
   font-weight: 700;
@@ -287,45 +301,37 @@
 }
 .leave-table th:nth-child(1),
 .leave-table td:nth-child(1) {
-  width: 120px;
-  padding-left: 35px;
+  width: calc(95% / 6);
   text-align: center;
 }
 
 .leave-table th:nth-child(2),
 .leave-table td:nth-child(2) {
-  width: 160px;
-  padding-left: 100px;
+  width: calc(95% / 6);
   text-align: center;
 }
 
 .leave-table th:nth-child(3),
 .leave-table td:nth-child(3) {
-  width: 160px;
-   padding-left: 80px;
-   text-align: center;
+  width: calc(95% / 6);
+  text-align: center;
 }
 
 .leave-table th:nth-child(4),
 .leave-table td:nth-child(4) {
-  width: 160px;
-  padding-left: 80px;
+  width: calc(95% / 6);
   text-align: center;
 }
 
 .leave-table th:nth-child(5),
 .leave-table td:nth-child(5) {
-  width: 122px;
+  width: calc(95% / 6);
   text-align: center;
-  padding-left: 80px;
-  padding-right: 60px;
 }
 .leave-table th:nth-child(6),
 .leave-table td:nth-child(6) {
-  width:122px !important;
+  width: calc(95% / 6) !important;
   text-align: center;
-  padding-left: 80px;
-  padding-right: 60px;
 }
 
 .delete-icon { width: 18px; height: 18px; cursor: pointer; }
@@ -690,4 +696,22 @@
   .approval-button {
     width: 100%;
   }
+}
+
+/* Ensure React DatePicker calendar is above sticky headers and other content */
+.react-datepicker-popper {
+  z-index: 2000 !important;
+}
+
+/* Global safety: prevent stray horizontal scrollbar on the page */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Constrain any table in Apply Leave page */
+.apply-leave-container table {
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
 }

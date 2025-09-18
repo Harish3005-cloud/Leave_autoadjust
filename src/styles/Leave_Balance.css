@@ -80,6 +80,7 @@
 
 .apply-cancel-container .row.controls-row {
   grid-template-columns: 0.9fr 0.6fr 0.6fr auto;
+  gap: 24px; /* increase spacing between controls */
   margin-top: 12px;
 }
 
@@ -146,12 +147,41 @@
 .control-select { height: 57px; border: 1px solid #d0d0d0; border-radius: 6px; padding: 8px 36px 8px 12px; background: #fff; font-family: inherit; appearance: none; background-image: url('../assets/svg/chevron-down.svg'); background-repeat: no-repeat; background-position: right 10px center; background-size: 16px 16px; color: rgba(32, 34, 36, 1); }
 .control-select option { color: rgba(32, 34, 36, 1); }
 
-
-.date-input { position: relative; display: flex; align-items: center; }
-.date-native { height: 40px; width: 100%; border: 1px solid #d0d0d0; border-radius: 6px; padding: 8px 160px 8px 12px; gap:6px; background: #fff; font-family: inherit; color: rgba(32, 34, 36, 1); }
+.date-input { position: relative !important; display: flex !important; align-items: center !important; width: 100% !important; }
+.date-native {
+  height: 48px !important; 
+  width: 415px !important;  /* responsive full-width */
+  border: 1px solid #d0d0d0 !important;
+  border-radius: 6px !important;
+  padding: 8px 36px 8px 12px !important; 
+  background: #fff !important;
+  font-family: inherit !important;
+  color: rgba(32, 34, 36, 1) !important;
+  box-sizing: border-box !important;
+}
 .date-native::placeholder { color: rgba(32, 34, 36, 1); opacity: 1; }
-.date-button { position: absolute; right: 8px; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 4px; }
-.date-icon { width: 20px; height: 20px; }
+.date-button {
+  position: absolute !important;
+  top: 50% !important;
+  right: 10px !important;
+  transform: translateY(-50%) !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 4px !important;
+}
+.date-icon {
+  display: block !important;
+  width: 16px !important; 
+  height: 16px !important;
+  margin: 0 !important; /* keep icon flush inside the button */
+  position: static !important; 
+}
 
 .add-to-list { display: flex; align-items: flex-end; justify-content: flex-end; justify-self: end; }
 .add-to-leave { height: 40px; margin-left: 23px; padding: 0 14px; border: 1px solid rgba(232, 231, 227, 1); color: rgba(56, 174, 224, 1); background: rgba(255, 255, 255, 1); border-radius: 6px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; text-transform: lowercase;  }

@@ -19,14 +19,13 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<CancelLeave />} />
+          
           {/* <Route path="/cancel-leave" element={<CancelLeave />} /
            */}
           <Route path="/Leave_state1" element={<Leave_state1 />} />
           <Route path="/ApplyLeave" element={<ApplyLeave />} />
           <Route path="/Leave_Balance" element={<Leave_Balance />} />
-          <Route path="/Avatars3" element={<Avatars3 />} />
-          <Route path="/Avatars4" element={<Avatars4 />} />
+        
         </Routes>
       </Router>
     </>

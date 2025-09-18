@@ -4,6 +4,8 @@ import CancelLeaveIcon from "../assets/svg/cancelLeaveIcon.svg";
 import greyIcon from "../assets/svg/greyiicon.svg";
 import arrowCircle from "../assets/svg/Arrow-circle.svg";
 import notification from "../assets/svg/notification.svg";
+import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
+import "overlayscrollbars/styles/overlayscrollbars.css";
 
 const LeaveDetailModal = ({ onClose }) => {
   const leaveDetails = [
@@ -38,7 +40,17 @@ const LeaveDetailModal = ({ onClose }) => {
         <h2>Leave Type</h2>
         <button onClick={onClose} className="leave-detail-modal-close" aria-label="Close modal">&times;</button>
       </div>
-      <div className="leave-detail-table-container">
+      <OverlayScrollbarsComponent
+        options={{
+          paddingAbsolute: true,
+          scrollbars: {
+            theme: "os-theme-leave",
+            visibility: "visible",
+            autoHide: "never",
+          },
+        }}
+        className="leave-detail-table-container"
+      >
         <table className="leave-detail-table">
           <thead>
             <tr>
@@ -65,7 +77,7 @@ const LeaveDetailModal = ({ onClose }) => {
             ))}
           </tbody>
         </table>
-      </div>
+      </OverlayScrollbarsComponent>
     </div>
   );
 };
@@ -95,7 +107,15 @@ const RequiredInfo = ({ onClick, className = "" }) => {
           alt="Cancel Leave Icon"
         />
         <span className="required-text"> Leave Balance Overview</span>
-        <img src={greyIcon} alt="Grey Icon" className="grey-icon-header" onClick={(e) => { e.stopPropagation(); setIsModalOpen(true); }} />
+        <img
+          src={greyIcon}
+          alt="Info"
+          className={`grey-icon-header ${isModalOpen ? 'active' : ''}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsModalOpen(true);
+          }}
+        />
       </div>
 
       <div className="financial-year-header">

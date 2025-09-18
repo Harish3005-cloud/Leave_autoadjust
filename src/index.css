@@ -67,3 +67,78 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Global scrollbar styling for Leave Detail table container */
+.leave-detail-table-container {
+  /* Firefox fallback */
+  scrollbar-width: thin !important;
+  scroll-margin-right: 1000px !important;
+  scrollbar-color: rgba(56, 174, 224, 1) #eaf1fb !important;
+  /* GAP between table content and scrollbar */
+  padding-right: 25px !important;
+}
+
+.leave-detail-table-container::-webkit-scrollbar {
+  width: 4px !important;  /* vertical thickness */
+  height: 4px !important; /* horizontal thickness */
+}
+
+/* Remove any arrow buttons (not typically shown in modern Chromium, but safe) */
+.leave-detail-table-container::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.leave-detail-table-container::-webkit-scrollbar-track {
+  background: #eaf1fb !important;       /* track color */
+  border-radius: 4px !important;         /* rounded corners per spec */
+  box-shadow: inset 0 0 0 0 #f7faff !important; /* no inner trough */
+}
+
+.leave-detail-table-container::-webkit-scrollbar-thumb {
+  background: rgba(56, 174, 224, 1) !important; /* thumb color */
+  border-radius: 4px !important;                 /* rounded corners per spec */
+  border: 0 !important;                          /* clean pill, no gap */
+  min-height:0px !important;                   /* vertical thumb length (smaller) */
+}
+
+/* Ensure horizontal thumb length as well */
+.leave-detail-table-container::-webkit-scrollbar-thumb:horizontal {
+  min-width: 16px !important;                    /* horizontal thumb length (smaller) */
+}
+
+.leave-detail-table-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 174, 224, 1) !important; /* keep consistent, no hover change */
+}
+
+/* OverlayScrollbars custom theme: os-theme-leave */
+.os-theme-leave.os-scrollbar-vertical,
+.os-theme-leave > .os-scrollbar-vertical {
+  width: 4px !important; /* vertical thickness */
+}
+
+.os-theme-leave .os-scrollbar-track,
+.os-theme-leave > .os-scrollbar-vertical .os-scrollbar-track {
+  background: #eaf1fb !important; /* track color */
+  border-radius: 4px !important;
+}
+
+.os-theme-leave .os-scrollbar-handle,
+.os-theme-leave > .os-scrollbar-vertical .os-scrollbar-handle {
+  background: rgba(56, 174, 224, 1) !important; /* thumb color */
+  border-radius: 4px !important;                 /* rounded corners */
+  min-height: 16px !important;                   /* vertical handle length (smaller) */
+}
+
+/* Horizontal OverlayScrollbars handle */
+.os-theme-leave > .os-scrollbar-horizontal {
+  height: 4px !important;                        /* horizontal thickness */
+}
+.os-theme-leave > .os-scrollbar-horizontal .os-scrollbar-handle {
+  min-width: 16px !important;                    /* horizontal handle length (smaller) */
+  height:4px !important;                /* horizontal handle length */
+}
+
+/* Ensure no arrow buttons in theme */
+.os-theme-leave .os-scrollbar-button { display: none !important; }
